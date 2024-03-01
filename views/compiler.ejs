@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            box-sizing: border-box;
+            margin: 0px;
+        }
+        body{
+            height: 100svh;
+            width: 100svw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            /* border: 2px solid red; */
+            background-color: rgba(4, 1, 22, 0.975);
+            padding: 10px;
+        }
+        .section{
+            display: flex;
+            height: 100%;
+            width: 100%;
+            gap:2rem;
+        }
+        .navber{
+            height: 6rem;
+            width: 100%;
+            /* border: 2px solid red; */
+            /* background-color: aqua; */
+            display: flex;
+            gap: 1.8rem;
+        }
+        .leftSection{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            border-radius: .5rem;
+        }
+        .rightSection{
+            height: 96%;
+            width: 50%;
+            /* border: 2px solid red; */
+            border-radius: .5rem;
+            margin: 1rem;
+            background-color: #3c3c3c;
+            display: flex;
+            flex-direction: column;
+        }
+        .container{
+            height: 580px;
+            width: 98%;
+            /* border: 2px solid green; */
+            display: flex;
+            flex-direction: column;
+            overflow-y:scroll;
+            border-radius: 1rem;
+            margin: .5rem;
+            background-color: #3c3c3c; 
+            
+        }
+        .inputSection{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            gap: 1rem;
+            /* margin-block: .5rem;
+            margin-inline:2rem; */
+            padding: .4rem;
+            /* border: 2px solid green; */
+        }
+        input{
+            width: 90%;
+            height: 100%;
+            border-radius: .5rem;
+        }
+        button{
+            width: 10%;
+            height: 100%;
+            border-radius: .5rem;
+            background-color: rgb(38, 222, 38);
+        }
+        .container::-webkit-scrollbar{
+            display: none;
+        }
+        .container::-webkit-scrollbar-track{
+            background-color: gray;
+            
+        }
+        .container::-webkit-scrollbar-thumb{
+            background-color: rgb(65, 43, 43);
+            opacity: 1;
+            
+        }
+        .container::-webkit-scrollbar-thumb:hover{
+            background-color: rgb(92, 81, 81);
+        }
+        #chatNav{
+            height: 80%;
+            width: 100%;
+            /* border: 2px solid red; */
+            border-radius: 1rem;
+            margin: .5rem;
+            background-color: #3c3c3c; 
+            display: flex;
+            justify-content: space-between;
+        }
+        #pdfNav{
+            height: 80%;
+            width: 50%;
+            /* border: 2px solid red; */
+            border-radius: .5rem;
+            margin: .5rem;
+            background-color: #3c3c3c; 
+            text-align: start;
+            display: flex;
+            
+        }
+        .chat{
+            height: auto;
+            width: 200px;
+            border-radius: 3px;
+            /* border: 2px solid red; */
+            word-wrap: break-word;
+            margin-block: 1rem;
+            font-size: 2rem;
+            border-radius: 1rem;
+        }
+        .chat.left{
+            margin-right: auto;
+            margin-left: 1rem;
+            background-color:rgba(20, 20, 190, 0.806);
+            color: white;
+        }
+        .chat.right{
+            margin-left: auto;
+            margin-right: 1rem;
+            background-color: rgba(13, 206, 13, 0.482);
+            color: white;
+        }
+         p{
+            margin-left: 10px;
+        } 
+        .pdfBar{
+            display: block;
+            height: 3rem;
+            width: 90%;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: blue;
+            background-color: antiquewhite;
+            /* border: 2px solid green; */
+            border-radius: .5rem;
+            margin: .8rem;
+        }
+        span{
+            font-size: 2rem;
+            color: white;
+            display: inline-block;
+            /* border: 2px solid green; */
+            margin: 1rem;
+        }
+        form{
+            width: 16rem;
+            
+            margin-left: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #upload_button{
+            width: 85px;
+            height: 2.3rem;
+        }
+        #upload_file{
+            width: 90px;
+            height: 1.3rem;
+            margin: 2rem;
+            margin-left: auto;
+            padding:0px;
+        }
+        
+        i{
+            display: inline-block;
+            margin: 1rem;
+            margin-right: 2rem;
+            font-size: 3rem;
+            /* margin-right: auto; */
+        }
+        #massage{
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navber">
+        <div id="pdfNav">
+            <span>pdfs</span>
+            <form action="/compiler" method="post" enctype="multipart/form-data">
+                <input type="file" name="pdf" id="upload_file">
+                <button type="submit" id="upload_button">upload file</button>
+            </form>
+        </div>
+        <div id="chatNav">
+            <span>Compiler Design</span>
+            <i class="fa-solid fa-video"></i>
+        </div>
+        
+    </div>
+    <div class="section">
+        <div class="rightSection" id="<%=documents%>">
+                
+        </div>
+        <div class="leftSection">
+            <div class="container">
+            <!-- <div class="chat right">
+            </div>
+            <div class="chat left">
+            </div> -->
+            
+        </div>
+        <div class="inputSection">
+            <input type="text" id="massage">
+            
+        <button id="send_button">send</button>
+        </div>
+        </div>
+        
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        console.log("in room");
+        socket.emit("join","compiler");
+        let button=document.querySelector("#send_button");
+        let container=document.querySelector(".container");
+        
+        let rightSection=document.querySelector(".rightSection");
+        let arr=rightSection.getAttribute("id").split(",");
+        console.log(arr);
+        for(let i=0;i<arr.length;i++){
+            let pdfBar=document.createElement("div");
+            pdfBar.classList.add("pdfBar");
+            pdfBar.innerHTML=`<a href="/${arr[i]}" target="_blank">${arr[i]}</a>`;
+            rightSection.append(pdfBar);
+            
+        }
+        button.addEventListener("click",()=>{
+            console.log("in function")
+            let input=document.querySelector("#massage");
+            let newChat=document.createElement("div");
+            let userName=document.createElement("p");
+           let val="Arpan";
+            container.append(userName);
+            newChat.innerHTML=`<p>${val}<br> ${input.value}</p>`;
+            newChat.classList.add("chat");
+            newChat.classList.add("right");
+            container.append(newChat);
+            socket.emit("massage",{data:input.value,room:"compiler",id:val});
+            container.scrollTop=container.scrollHeight;
+            input.value="";
+        })
+        socket.on("forword",async(data)=>{
+            let newChat=document.createElement("div");
+            newChat.innerHTML=`<p>${data.id}<br> ${data.data}</p>`;
+            newChat.classList.add("chat");
+            newChat.classList.add("left");
+            if(true){
+                console.log("iiiii");
+            }
+            //unique Feature :: auto scroll down when massage receive
+            
+            await container.append(newChat);
+            
+                container.scrollTop=container.scrollHeight;
+            
+        })
+        socket.emit("typing","sasasa");
+    </script>
+</body>
+</html>

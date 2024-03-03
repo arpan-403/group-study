@@ -215,8 +215,12 @@
         
     </div>
     <div class="section">
-        <div class="rightSection" id="<%=documents%>">
-                
+        <div class="rightSection" >
+                <% for(let i=0;i<documents.length;i++ ){%>
+                    <div class="pdfBar">
+                        <a href=`/${documents[i]}` target="_blank"><%=documents[i]%></a>
+                    </div>
+                <%}%>
         </div>
         <div class="leftSection">
             <div class="container">
@@ -243,15 +247,8 @@
         let container=document.querySelector(".container");
         
         let rightSection=document.querySelector(".rightSection");
-        let arr=rightSection.getAttribute("id").split(",");
-        console.log(arr);
-        for(let i=0;i<arr.length;i++){
-            let pdfBar=document.createElement("div");
-            pdfBar.classList.add("pdfBar");
-            pdfBar.innerHTML=`<a href="/${arr[i]}" target="_blank">${arr[i]}</a>`;
-            rightSection.append(pdfBar);
-            
-        }
+        
+        
         button.addEventListener("click",()=>{
             console.log("in function")
             let input=document.querySelector("#massage");
